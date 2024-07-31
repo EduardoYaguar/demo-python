@@ -12,6 +12,6 @@ jobs:
         id: get_value
         uses: ./.github/actions/python-actions
         with:
-        num: 20
+          num: 20
       - name: Print result
         run: echo"${{ steps.get_value.outputs.result }}"
