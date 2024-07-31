@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Fetch result
         id: get_value
-        uses: ./.github/actions/python-actions
+        uses: ./.github/python-actions
         with:
           num: 20
       - name: Print result
