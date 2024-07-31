@@ -1,0 +1,17 @@
+name: Test actions
+on: [push]
+
+jobs:
+  get-result:
+    runs-on: ubuntu-latest
+    name: Returns the result of a sum
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Fetch result
+        id: get_value
+        uses: ./.github/actions/python-actions
+        with:
+        num: 20
+      - name: Print result
+        run: echo"${{ steps.get_value.outputs.result }}"
