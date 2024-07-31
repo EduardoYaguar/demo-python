@@ -1,0 +1,26 @@
+name: Github Action Demo
+description: A Github Action for Python Language
+inputs:
+  num:
+    description: Ingrese un valor
+    required: true
+    default: "2"
+outputs:
+  result:
+    description: Sumar 3 a la entrada
+    value: ${{steps.get-result.outputs.result}}
+runs:
+  using: composite
+  steps: 
+    - name: Install Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+    - name: Pass Inputs to Shell
+      run: |
+        echo "INPUT_NUM={{inputs.num}}" >>GITHUB_ENV
+      shell: bash
+    - name: Get result
+      id: get-result
+      run: python src/main.py
+      shell: bash
